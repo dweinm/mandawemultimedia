@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blender Project</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Blender: Solar System</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="blender.html">Blender Project</a>
+      <a href="rotoscope.html">Rotoscope Project</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <p>
+        This 3D animation was created using Blender. I modeled each planet, added textures, and animated orbital paths to simulate the solar system. It also includes realistic lighting and camera motion.
+      </p>
+
+      <h2>Solar System Animation Output</h2>
+      <video controls width="600">
+        <source src="assets/solarsystem.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <h2>Planet Clips & Age Calculation</h2>
+      <label for="earth-age-input"><strong>Enter your age (in Earth years):</strong></label>
+      <input type="number" id="earth-age-input" value="20" min="1" style="margin: 0 8px 16px 8px; width: 80px;" />
+
+      <div class="planet-clips">
+        <div>
+          <video controls width="400">
+            <source src="assets/mercury.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="clip-label">Mercury<br>Age: <span id="age-mercury">...</span> years</div>
+        </div>
+        <div>
+          <video controls width="400">
+            <source src="assets/venus.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="clip-label">Venus<br>Age: <span id="age-venus">...</span> years</div>
+        </div>
+        <div>
+          <video controls width="400">
+            <source src="assets/earth.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="clip-label">Earth<br>Age: <span id="age-earth">...</span> years</div>
+        </div>
+        <div>
+          <video controls width="400">
+            <source src="assets/mars.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="clip-label">Mars<br>Age: <span id="age-mars">...</span> years</div>
+        </div>
+        <div>
+          <video controls width="400">
+            <source src="assets/jupiter.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="clip-label">Jupiter<br>Age: <span id="age-jupiter">...</span> years</div>
+        </div>
+        <div>
+          <video controls width="400">
+            <source src="assets/saturn.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="clip-label">Saturn<br>Age: <span id="age-saturn">...</span> years</div>
+        </div>
+        <div>
+          <video controls width="400">
+            <source src="assets/uranus.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="clip-label">Uranus<br>Age: <span id="age-uranus">...</span> years</div>
+        </div>
+        <div>
+          <video controls width="400">
+            <source src="assets/neptune.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="clip-label">Neptune<br>Age: <span id="age-neptune">...</span> years</div>
+        </div>
+        <div>
+          <video controls width="400">
+            <source src="assets/pluto.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="clip-label">Pluto<br>Age: <span id="age-pluto">...</span> years</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Dweight Mandawe© 2025 </p>
+  </footer>
+
+  <script>
+    // Orbital periods in Earth years
+    const planetPeriods = {
+      mercury: 0.24,
+      venus: 0.62,
+      earth: 1,
+      mars: 1.88,
+      jupiter: 11.86,
+      saturn: 29.46,
+      uranus: 84.01,
+      neptune: 164.8,
+      pluto: 248.59
+    };
+
+    function updateAges() {
+      const earthAge = Number(document.getElementById('earth-age-input').value) || 0;
+      for (const planet in planetPeriods) {
+        const age = earthAge > 0 ? (earthAge / planetPeriods[planet]).toFixed(2) : '...';
+        document.getElementById(`age-${planet}`).textContent = age;
+      }
+    }
+
+    document.getElementById('earth-age-input').addEventListener('input', updateAges);
+
+    // Initialize on page load
+    updateAges();
+  </script>
+</body>
+</html>
